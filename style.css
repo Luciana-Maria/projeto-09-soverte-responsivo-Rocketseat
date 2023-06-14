@@ -1,0 +1,248 @@
+* {
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 62.5%;/*medida flexivel*/
+    --fs-body: 1.6rem; /* tamnho da fonte*/
+
+    --bc-body: #EFF1FF;/*cor de fundo corpo*/
+    --bc-header: #8E9AAF;/* cor de fundo header*/
+    --bc-h1: #CBC0D3;/* cor de fundo do h1*/
+    --bc-h2: #FEEAFA;/* cor de fundo do h2*/
+    --fc-h1: #FFFFFF;/*cor da letra*/
+    --fc-h2: #4A4E69;/*cor da letra*/
+    --fc-text: #23053A; /*cor da letra */
+
+    --ff-titles: 'Staatliches', cursive;/*fonte titulo*/
+    --ff-text: 'Palanquin', sans-serif;/*fonte texto*/
+}
+
+
+
+body {
+    font-size: var(--fs-body);/*fonte para o body todo*/
+}
+
+#page { /*caixa que vai receber tudo*/
+    max-width: 384px;/*largura máxima*/
+    min-width: 200px;/*largura minino*/
+    margin: auto;
+}
+
+header {
+    background-color: var(--bc-header);/*cor de fundo*/
+    padding: 3.2rem 0 2.9rem; /* preenchimento para da espaços internos*/
+    text-align: center;/* esse comando alinhou a img/h1*/
+}
+
+header img {
+    max-width: 218px;/*largura máxima da caixa*/
+    width: 100%; /*largura */
+    height: auto;/*altura*/
+}
+
+ header h1 { /*titulo space cream*/
+    font-family: var(--ff-titles);/*fonte*/
+    background-color: var(--bc-h1); /*cor de fundo*/
+    color: var(--fc-h1); /*cor da letra */
+    font-size: 4.0rem;/*tamanho da fonte*/
+    line-height: 3.4rem;/*altura da linha*/
+    letter-spacing: 0.05em;/*espaço entre as letras*/
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);/*sombra no titulo*/
+    padding: 0.8rem 0; /*espaçamento*/
+    margin-top: 3.2rem;/*margem top*/
+    font-weight: 400;/*largura da fonte*/
+}
+
+header p {
+    font-weight: 400;
+    font-size: 1.45rem;
+    line-height: 2.0rem;
+    color: var(--fc-h1);
+    font-family: var(--ff-text);
+    margin: 3.2rem 42px 0;
+    display: none;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+}
+
+#container {
+    background-color: var(--bc-body);
+    padding: 1.4rem 3.2rem 6rem;
+    width: 100%;
+}
+
+ main p, footer {/* p eo footer recebem o estilo*/
+    font-weight: 400;
+    font-size: 1.45rem;
+    line-height: 2.0rem;
+    color: var(--fc-text);
+    font-family: var(--ff-text);
+    text-align: center;
+    margin-bottom: 3.1rem;
+}
+
+.card {
+    position: relative; /*para o position ser absoluto ao cartão*/
+}
+
+.card img {
+    border-radius: 20px;
+    width: 100%;
+    height: auto;
+    animation-name: downtop; /*anima de baixo para cima*/
+    animation-duration: 1s;
+}
+
+h2 {/*tipo de soverte*/
+    background-color: var(--bc-h2);
+    color: var(--fc-h2);
+    font-family: var(--ff-titles);
+    font-weight: 400;
+    display: inline-flex;
+    font-size: 2rem;
+    line-height: 3.4rem;
+    padding: 0 2.4rem;
+    border-radius: 20px;
+    position: absolute;/*para posicionar emcima da imagem*/
+    top: 1.6rem;
+    right: 1.6rem;
+    animation-name: topdown; /*animação de cima para baixo*/
+    animation-duration: 1s;
+}
+
+footer {
+    margin-top: 5.0rem;
+    text-align: center;
+    display: none;
+}
+
+main div:nth-child(6), main div:nth-child(7) {
+    display: none;
+}
+
+@keyframes downtop {/*para animação de cima para baixo*/
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes topdown {/*para animação de baixo para cima*/
+    0% {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@media (min-width: 700px) {/*para versão desktop*/
+    #page {
+        max-width: 128rem;
+        display: flex;
+    }
+
+    header {
+        max-width: 37.7rem;
+        width: 40%;
+    }
+
+    header p {
+        display: block;
+    }
+
+    main p {
+        display: none;
+    }
+
+    h2 {
+        display: none;
+         animation-name: topdown; /*animação de cima para baixo*/
+         animation-duration: 1s;
+       
+    }
+
+    footer {
+        display: block;
+    }
+
+    main div:nth-child(6), main div:nth-child(7) {
+        display: block;
+    }
+
+    main {
+        display: grid;
+        grid-template-areas: 
+        "A B C"
+        "D B F"
+        "D E F";
+    }
+
+    main div:nth-child(2) {
+        grid-area: A;
+    }
+
+    main div:nth-child(3) {
+        grid-area: B;
+    }
+
+    main div:nth-child(6) {
+        grid-area: C;
+    }
+
+    main div:nth-child(5) {
+        grid-area: D;
+    }
+
+    main div:nth-child(4) {
+        grid-area: E;
+    }
+
+    main div:nth-child(7) {
+        grid-area: F;
+    }
+
+    .card img {
+        transition: all 200ms;
+    }
+
+   /* .card img:hover{
+        transform: scale(1.1);
+    }*/
+
+    /*.card img:hover + h2 {
+        display: block;
+    }*/
+}
+h2 {/*tipo de soverte*/
+    background-color: var(--bc-h2);
+    color: var(--fc-h2);
+    font-family: var(--ff-titles);
+    font-weight: 400;
+    display: inline-flex;
+    font-size: 2rem;
+    line-height: 3.4rem;
+    padding: 0 2.4rem;
+    border-radius: 20px;
+    position: absolute;/*para posicionar emcima da imagem*/
+    top: 1.6rem;
+    right: 1.6rem;
+    animation-name: topdown; /*animação de cima para baixo*/
+    animation-duration: 1s;
+}
